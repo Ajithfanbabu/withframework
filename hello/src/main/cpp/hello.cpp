@@ -1,8 +1,3 @@
-#define WINVER 0x0500
-#include <Windows.h>
-#include <pdh.h>
-#include "tchar.h"
-
 #include <array>
 #include <iostream>
 #include <string>
