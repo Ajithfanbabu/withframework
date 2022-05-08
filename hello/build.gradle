@@ -30,7 +30,6 @@ qt {
 }
 
 library {
-
     binaries.configureEach { CppBinary binary ->
         def compileTask = binary.compileTask.get()
         compileTask.includes.from("${Jvm.current().javaHome}/include")
@@ -55,8 +54,8 @@ library {
 
         def linkTask = binary.linkTask.get()
         linkTask.linkerArgs.addAll(linkTask.targetPlatform.map {
-            if (it.operatingSystem.isWindows()) {
-                return ['user32.lib', 'ole32.lib','shell32.lib','pdh.lib']
+            if (it.operatingSystem.isMacOsX()) {
+                return ['-framework', 'IOKit','-framework', 'CoreFoundation','-framework','CoreGraphics']
             }
             return []
         })
